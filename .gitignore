@@ -1,0 +1,41 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# =========================
+# Django
+# =========================
+# Local database
+db.sqlite3
+
+# Django static files (optional, ignore if you collect static later)
+staticfiles/
+
+# Environment variables
+.env
+.env.*
+
+# =========================
+# Virtual environment
+# =========================
+# pipenv or venv
+.venv/
+venv/
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db

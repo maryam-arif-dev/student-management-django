@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-logo">
+        <img src="" alt="logo" />
+      </div>
+      <div class="header-nav">
+        <nav>
+          <a href="#">Students</a>
+          <a href="#">Courses</a>
+          <a href="#">Enrollments</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      {% block content %}
+      <!-- Page-specific content goes here -->
+      {% endblock %}
+    </div>
+
+    <footer class="footer">
+      <p>© 2026 Student Management System</p>
+    </footer>
+  </body>
+</html>

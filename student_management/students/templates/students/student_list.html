@@ -1,37 +1,42 @@
 {% extends "base.html" %} {% block content %}
-<div class="student-list-title">
-  <h2>Students</h2>
-</div>
-<div class="student-list-table">
-  <table>
-    <thead>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Date of Birth</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for student in students %}
-      <tr>
-        <td>{{ student.first_name }}</td>
-        <td>{{ student.last_name }}</td>
-        <td>{{ student.email }}</td>
-        <td>{{ student.phone_number }}</td>
-        <td>{{ student.date_of_birth }}</td>
-        <td>
-          <a href="{% url 'students:edit' student.id %}">Edit</a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
+<div class="list student-list">
+  <div class="list-title student-list-title">
+    <h2>Students</h2>
+  </div>
+  <div class="list-table student-list-table">
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Date of Birth</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for student in students %}
+        <tr>
+          <td>{{ student.first_name }}</td>
+          <td>{{ student.last_name }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.phone_number }}</td>
+          <td>{{ student.address }}</td>
+          <td>{{ student.date_of_birth }}</td>
+          <td>
+            <a href="{% url 'students:edit' student.id %}">Edit</a>
+            <a href="{% url 'students:delete' student.id %}">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
-<div class="student-list-link">
-  <a href="{% url 'students:add' %}">Add New Student</a>
+  <div class="list-link student-list-link">
+    <a href="{% url 'students:add' %}">Add New Student</a>
+  </div>
 </div>
 {% endblock %}

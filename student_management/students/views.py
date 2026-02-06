@@ -34,3 +34,11 @@ def edit_student(request, id):
         'form': form,
         'student': student
     })
+def delete_student(request, id):
+    student = get_object_or_404(Student, id=id)
+
+    if request.method == "POST":
+        student.delete()
+        return redirect("students:list")
+
+    return render(request, "students/delete_student.html", {"student": student})

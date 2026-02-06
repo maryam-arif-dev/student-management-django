@@ -1,18 +1,39 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>Student Management System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
   </head>
   <body>
     <header class="header">
       <div class="header-logo">
-        <img src="" alt="logo" />
+        <a href="#">
+          <svg
+            width="120"
+            height="40"
+            viewBox="0 0 120 40"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <text
+              x="0"
+              y="28"
+              font-family="Poppins, sans-serif"
+              font-size="28"
+              font-weight="700"
+              fill="#3b82f6"
+            >
+              SMS
+            </text>
+          </svg>
+        </a>
       </div>
+
       <div class="header-nav">
         <nav>
-          <a href="#">Students</a>
+          <a href="{% url 'students:list' %}">Students</a>
           <a href="#">Courses</a>
           <a href="#">Enrollments</a>
         </nav>

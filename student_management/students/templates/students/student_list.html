@@ -19,14 +19,14 @@
       <tbody>
         {% for student in students %}
         <tr>
-          <td>{{ student.first_name }}</td>
-          <td>{{ student.last_name }}</td>
-          <td>{{ student.email }}</td>
-          <td>{{ student.phone_number }}</td>
-          <td>{{ student.address }}</td>
-          <td>{{ student.date_of_birth }}</td>
-          <td>
-            <a href="{% url 'students:edit' student.id %}">Edit</a>
+          <td data-label="First Name">{{ student.first_name }}</td>
+          <td data-label="Last Name">{{ student.last_name }}</td>
+          <td data-label="Email">{{ student.email }}</td>
+          <td data-label="Phone">{{ student.phone_number }}</td>
+          <td data-label="Address">{{ student.address }}</td>
+          <td data-label="Date of Birth">{{ student.date_of_birth }}</td>
+          <td data-label="Actions">
+            <a href="{% url 'students:edit' student.id %}">Edit</a> |
             <a href="{% url 'students:delete' student.id %}">Delete</a>
           </td>
         </tr>

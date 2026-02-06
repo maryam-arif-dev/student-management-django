@@ -206,3 +206,31 @@ h2 {
     color: #6b7280;
   }
 }
+/* Messages */
+.messages {
+  max-width: 1200px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+}
+
+.message {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message.success {
+  background-color: #00adad;
+}
+.message.error {
+  background-color: #ec4c4c;
+}
+.message.warning {
+  background-color: #f59e0b;
+}
+.message.info {
+  background-color: #3b82f6;
+}

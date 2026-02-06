@@ -19,8 +19,8 @@ def add_student(request):
     return render(request, 'students/add_student.html', {
         'form': form
     })
-def edit_student(request, pk):
-    student = get_object_or_404(Student, pk=pk)
+def edit_student(request, id):
+    student = get_object_or_404(Student, id = id)
 
     if request.method == 'POST':
         form = StudentForm(request.POST, instance=student)

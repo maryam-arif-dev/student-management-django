@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="edit edit-course">
+  <div class="edit-title">
+    <h2>Edit Course</h2>
+  </div>
+
+  <div class="edit-form">
+    <form method="POST">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Update</button>
+    </form>
+  </div>
+
+  <div class="edit-link">
+    <a href="#">Back to Course List</a>
+  </div>
+</div>
+
+{% endblock %}

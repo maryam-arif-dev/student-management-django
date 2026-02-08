@@ -19,8 +19,8 @@ def add_course(request):
     return render(request, 'courses/add_course.html', {'form': form})
 
 # Edit View 
-def edit_course(request, pk):
-    course = get_object_or_404(Course, pk=pk)
+def edit_course(request, id):
+    course = get_object_or_404(Course, id=id)
 
     if request.method == 'POST':
         form = CourseForm(request.POST, instance=course)
@@ -33,8 +33,8 @@ def edit_course(request, pk):
     return render(request, 'courses/edit_course.html', {'form': form})
 
 # Delete View 
-def delete_course(request, pk):
-    course = get_object_or_404(Course, pk=pk)
+def delete_course(request, id):
+    course = get_object_or_404(Course, id=id)
 
     if request.method == 'POST':
         course.delete()

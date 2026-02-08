@@ -20,7 +20,7 @@
           <td>{{ enrollment.student }}</td>
           <td>{{ enrollment.course }}</td>
           <td>
-            <a href="{% url 'enrollments:edit' enrollment.id %}">Edit</a>
+            <a href="{% url 'enrollments:edit' enrollment.id %}">Edit</a> |
             <a href="{% url 'enrollments:delete' enrollment.id %}">Delete</a>
           </td>
         </tr>

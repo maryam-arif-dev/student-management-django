@@ -12,6 +12,7 @@
           <th>Name</th>
           <th>Code</th>
           <th>Credits</th>
+          <th>Description</th>
           <th>Start Date</th>
           <th>End Date</th>
           <th>Actions</th>
@@ -20,12 +21,13 @@
       <tbody>
         {% for course in courses %}
         <tr>
-          <td>{{ course.name }}</td>
-          <td>{{ course.code }}</td>
-          <td>{{ course.credits }}</td>
-          <td>{{ course.start_date }}</td>
-          <td>{{ course.end_date }}</td>
-          <td>
+          <td data-label="Name">{{ course.name }}</td>
+          <td data-label="Code">{{ course.code }}</td>
+          <td data-label="Credits">{{ course.credits }}</td>
+          <td data-label="description">{{ course.description }}</td>
+          <td data-label="Start Date">{{ course.start_date }}</td>
+          <td data-label="End Date">{{ course.end_date }}</td>
+          <td data-label="Actions">
             <a href="{% url 'courses:edit' course.id %}">Edit</a> |
             <a href="{% url 'courses:delete' course.id %}">Delete</a>
           </td>

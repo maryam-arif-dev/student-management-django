@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="add add-enrollment">
+  <div class="add-title">
+    <h2>Add Enrollment</h2>
+  </div>
+
+  <div class="add-form">
+    <form method="POST">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Save</button>
+    </form>
+  </div>
+
+  <div class="add-link">
+    <a href="{% url 'enrollments:list' %}">Back to Enrollment List</a>
+  </div>
+</div>
+
+{% endblock %}

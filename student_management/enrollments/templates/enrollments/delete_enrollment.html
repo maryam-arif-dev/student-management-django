@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="delete delete-enrollment">
+  <div class="delete-title">
+    <h2>Delete Enrollment</h2>
+  </div>
+
+  <div class="delete-description">
+    <p>
+      Are you sure you want to delete this enrollment:
+      <strong>{{ enrollment.student }} - {{ enrollment.course }}</strong> ?
+    </p>
+  </div>
+
+  <div class="delete-form">
+    <form method="POST">
+      {% csrf_token %}
+      <button type="submit">Yes, Delete</button>
+      <a href="{% url 'enrollments:list' %}">Cancel</a>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

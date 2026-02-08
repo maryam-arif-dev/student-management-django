@@ -11,15 +11,17 @@
         <tr>
           <th>Student</th>
           <th>Course</th>
+          <th>Enrollment Date</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         {% for enrollment in enrollments %}
         <tr>
-          <td>{{ enrollment.student }}</td>
-          <td>{{ enrollment.course }}</td>
-          <td>
+          <td data-label="Student">{{ enrollment.student }}</td>
+          <td data-label="Course">{{ enrollment.course }}</td>
+          <td data-label="Date Enrolled">{{ enrollment.enrollment_date }}</td>
+          <td data-label="Actions">
             <a href="{% url 'enrollments:edit' enrollment.id %}">Edit</a> |
             <a href="{% url 'enrollments:delete' enrollment.id %}">Delete</a>
           </td>

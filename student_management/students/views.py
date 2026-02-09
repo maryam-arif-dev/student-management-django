@@ -3,11 +3,13 @@ from .models import Student
 from .forms import StudentForm
 from django.contrib import messages
 
+# Fetch data from student
 def student_list(request):
     students = Student.objects.all()
     return render(request, 'students/student_list.html', {
         'students': students
     })
+# Add new Students
 def add_student(request):
     if request.method == 'POST':
         form = StudentForm(request.POST)
@@ -23,6 +25,7 @@ def add_student(request):
     return render(request, 'students/add_student.html', {
         'form': form
     })
+# Edit an existing student
 def edit_student(request, id):
     student = get_object_or_404(Student, id = id)
 
@@ -39,12 +42,13 @@ def edit_student(request, id):
         'form': form,
         'student': student
     })
+# Delete a student 
 def delete_student(request, id):
     student = get_object_or_404(Student, id=id)
 
     if request.method == "POST":
         student.delete()
-        messages.success(request, "Student deleted successfully!")
+        messages.warning(request, "Student deleted successfully!")
         return redirect("students:list")
 
     return render(request, "students/delete_student.html", {"student": student})

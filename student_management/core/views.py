@@ -1,3 +1,12 @@
 from django.shortcuts import render
-
-# Create your views here.
+from students.models import Student
+from courses.models import Course
+from enrollments.models import Enrollment
+# Dashboard View
+def dashboard(request):
+    context = {
+        'total_students': Student.objects.count(),
+        'total_courses': Course.objects.count(),
+        'total_enrollments': Enrollment.objects.count(),
+    }
+    return render(request, 'core/dashboard.html', context)

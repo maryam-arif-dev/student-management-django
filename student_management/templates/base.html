@@ -34,6 +34,11 @@
       <div class="header-nav">
         <nav>
           <a
+            href="{% url 'core:dashboard' %}"
+            class="{% if request.path == '/' %}active{% endif %}"
+            >Dashboard</a
+          >
+          <a
             href="{% url 'students:list' %}"
             class="{% if request.path|slice:':10' == '/students/' %}active{% endif %}"
             >Students</a

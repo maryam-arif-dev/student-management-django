@@ -239,3 +239,41 @@ h2 {
 .message.info {
   background-color: #3b82f6;
 }
+/* ===== Dashboard ===== */
+.dashboard {
+  margin-top: 2rem;
+}
+
+.dashboard-cards {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 250px;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.card p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00adad; /* matches your teal theme */
+}

@@ -31,7 +31,9 @@
         </a>
       </div>
 
-      <div class="header-nav">
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+      <div class="header-nav" id="navMenu">
         <nav>
           <a
             href="{% url 'core:dashboard' %}"
@@ -73,5 +75,6 @@
     <footer class="footer">
       <p>© 2026 Student Management System</p>
     </footer>
+    <script src="{% static 'javascript/script.js' %}"></script>
   </body>
 </html>

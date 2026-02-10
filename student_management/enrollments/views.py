@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Enrollment
 from .forms import EnrollmentForm
+from django.contrib.auth.decorators import login_required
 
+# Restrict Pages to Logged-in Users
+@login_required(login_url='core:login')
 # List all enrollments
 def enrollment_list(request):
     enrollments = Enrollment.objects.all()

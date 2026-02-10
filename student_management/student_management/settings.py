@@ -132,3 +132,8 @@ MESSAGE_TAGS = {
     messages.WARNING: 'warning',
     messages.ERROR: 'error',
 }
+# Login Redirect 
+# settings.py
+LOGIN_URL = 'core:login'          # Use namespace
+LOGIN_REDIRECT_URL = 'core:dashboard'
+LOGOUT_REDIRECT_URL = 'core:login'

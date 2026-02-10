@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Student
 from .forms import StudentForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
+# Restrict Pages to Logged-in Users
+@login_required(login_url='core:login')
 # Fetch data from student
 def student_list(request):
     students = Student.objects.all()

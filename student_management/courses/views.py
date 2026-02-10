@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Course
 from .forms import CourseForm
-
+from django.contrib.auth.decorators import login_required
+# Restrict Pages to Logged-in Users
+@login_required(login_url='core:login')
 # List View 
 def course_list(request):
     courses = Course.objects.all()

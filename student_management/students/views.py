@@ -14,7 +14,10 @@ def student_list(request):
     if query:
         students = Student.objects.filter(
             Q(first_name__icontains=query) |
-            Q(email__icontains=query)
+            Q(last_name__icontains=query) |
+            Q(email__icontains=query) |
+            Q(phone_number__icontains=query) |
+            Q(address__icontains=query)
         )
         # Show all students from databse tabel in UI tabe
     else:

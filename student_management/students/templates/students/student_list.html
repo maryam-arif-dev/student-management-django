@@ -3,6 +3,17 @@
   <div class="list-title student-list-title">
     <h2>Students</h2>
   </div>
+  <div class="list-search">
+    <form method="get" class="search-form">
+      <input
+        type="text"
+        name="q"
+        placeholder="Search students..."
+        value="{{ query | default:'' }}"
+      />
+      <button type="submit">Search</button>
+    </form>
+  </div>
   <div class="list-table student-list-table">
     <table>
       <thead>

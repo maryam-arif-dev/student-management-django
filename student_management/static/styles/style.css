@@ -418,3 +418,17 @@ h2 {
 .btn-logout:hover {
   background-color: #e04343;
 }
+/* Student Search form style */
+.search-form {
+  margin-bottom: 1rem;
+}
+
+.search-form input {
+  padding: 6px 10px;
+  width: 250px;
+}
+
+.search-form button {
+  padding: 6px 10px;
+  cursor: pointer;
+}

@@ -1,0 +1,114 @@
+{% extends "base.html" %} {% block content %}
+
+<h2>Search Results for "{{ query }}"</h2>
+
+<h3>Students</h3>
+<div class="list-table student-list-table">
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Date of Birth</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}
+      <tr>
+        <td data-label="First Name">{{ student.first_name }}</td>
+        <td data-label="Last Name">{{ student.last_name }}</td>
+        <td data-label="Email">{{ student.email }}</td>
+        <td data-label="Phone">{{ student.phone_number }}</td>
+        <td data-label="Address">{{ student.address }}</td>
+        <td data-label="Date of Birth">{{ student.date_of_birth }}</td>
+        <td data-label="Actions">
+          <a href="{% url 'students:edit' student.id %}">Edit</a> |
+          <a href="{% url 'students:delete' student.id %}">Delete</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td>
+          <p class="not-found">No students found.</p>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<h3>Courses</h3>
+<div class="list-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Credits</th>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for course in courses %}
+      <tr>
+        <td data-label="Name">{{ course.name }}</td>
+        <td data-label="Code">{{ course.code }}</td>
+        <td data-label="Credits">{{ course.credits }}</td>
+        <td data-label="description">{{ course.description }}</td>
+        <td data-label="Start Date">{{ course.start_date }}</td>
+        <td data-label="End Date">{{ course.end_date }}</td>
+        <td data-label="Actions">
+          <a href="{% url 'courses:edit' course.id %}">Edit</a> |
+          <a href="{% url 'courses:delete' course.id %}">Delete</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td>
+          <p class="not-found">No course found.</p>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h3>Enrollments</h3>
+<div class="list-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Student</th>
+        <th>Course</th>
+        <th>Enrollment Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for enrollment in enrollments %}
+      <tr>
+        <td data-label="Student">{{ enrollment.student }}</td>
+        <td data-label="Course">{{ enrollment.course }}</td>
+        <td data-label="Date Enrolled">{{ enrollment.enrollment_date }}</td>
+        <td data-label="Actions">
+          <a href="{% url 'enrollments:edit' enrollment.id %}">Edit</a> |
+          <a href="{% url 'enrollments:delete' enrollment.id %}">Delete</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td>
+          <p class="not-found">No enrollments found.</p>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -73,12 +73,71 @@ body {
   line-height: 1px;
   padding: 0;
 }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Equal gap between icons */
+}
 
+/* Global Search Style */
+.global-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.global-search-form {
+  all: unset;
+  display: block;
+}
+
+/* Search input visible on desktop */
+.global-search-form input {
+  width: 220px;
+  position: relative;
+  top: 5px;
+  padding: 8px 16px;
+  border-radius: 25px;
+
+  /* Glass effect */
+  background: rgba(209, 205, 205, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Hide icon on desktop */
+.search-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+/* Mobile Search Form */
+.global-search-form-mobile {
+  all: unset;
+  display: block;
+  line-height: 1px;
+  padding: 0;
+}
+/* Mobile search dropdown (hidden by default) */
+.mobile-search {
+  display: none;
+  position: absolute;
+  top: 101%;
+  background: #1f2937;
+  width: 90%;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+/* Mobile Style of global search */
 @media (max-width: 768px) {
-  .header {
-    padding: 1rem;
-  }
-
   /* Show hamburger */
   .menu-toggle {
     display: block;
@@ -101,8 +160,57 @@ body {
     flex-direction: column;
     gap: 1rem;
   }
+  .header {
+    display: flex;
+    align-items: center; /* Vertical center */
+    justify-content: space-between;
+    padding: 0.8rem 1rem; /* Equal top & bottom spacing */
+  }
 
+  /* Hide desktop search */
+  .global-search {
+    display: none;
+  }
+
+  /* Show search icon */
+  .search-toggle {
+    display: block;
+  }
+
+  /* Align right-side icons */
+  .search-toggle-button,
+  .menu-toggle-button {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Space between search and menu icon */
+  .search-toggle-button {
+    margin-right: 12px;
+  }
+
+  /* Make icons same size */
+  .search-toggle,
+  .menu-toggle {
+    font-size: 22px;
+    line-height: 1;
+  }
   .header-nav.active {
+    display: block;
+  }
+
+  /* Mobile search dropdown */
+  .mobile-search {
+    position: absolute;
+    top: 108%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+
+  .mobile-search.active {
     display: block;
   }
 }
@@ -425,10 +533,19 @@ h2 {
 
 .search-form input {
   padding: 6px 10px;
-  width: 250px;
+  width: 350px;
 }
 
 .search-form button {
   padding: 6px 10px;
   cursor: pointer;
+}
+/* Search Results page */
+.not-found {
+  margin-top: 2rem;
+  text-align: center;
+  color: #e11d48; /* warning red */
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
 }

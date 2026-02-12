@@ -15,4 +15,6 @@ urlpatterns = [
 
     # Logout page (POST)
     path('logout/', LogoutView.as_view(next_page='core:login'), name='logout'),
+    # Global Search
+    path('search/', views.global_search, name='search'),
 ]

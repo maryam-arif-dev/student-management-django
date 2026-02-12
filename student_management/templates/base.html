@@ -6,6 +6,10 @@
     <title>Student Management System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <header class="header">
@@ -30,8 +34,33 @@
           </svg>
         </a>
       </div>
+      <div class="header-actions">
+        <button class="search-toggle" onclick="toggleSearch()">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      </div>
 
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <div class="global-search">
+        <form
+          action="{% url 'core:search' %}"
+          method="get"
+          class="global-search-form"
+        >
+          <input type="text" name="q" placeholder="Search..." />
+        </form>
+      </div>
+
+      <!-- Mobile dropdown search -->
+      <div class="mobile-search" id="mobileSearch">
+        <form
+          action="{% url 'core:search' %}"
+          method="get"
+          class="global-search-form-mobile"
+        >
+          <input type="text" name="q" placeholder="Search..." />
+        </form>
+      </div>
 
       <div class="header-nav" id="navMenu">
         <nav>

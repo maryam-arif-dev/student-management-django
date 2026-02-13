@@ -573,3 +573,8 @@ h2 {
   margin: 0 10px;
   font-weight: 600;
 }
+/* form error */
+.form-error {
+  color: #dc2626;
+  font-size: 0.85rem;
+}

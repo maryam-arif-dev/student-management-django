@@ -24,6 +24,8 @@ def add_course(request):
             form.save()
             messages.success(request, 'Course added successfully!')
             return redirect('courses:list')
+        else:
+            messages.error(request, 'Failed to add course. Please check the form.')
     else:
         form = CourseForm()
 
@@ -39,6 +41,8 @@ def edit_course(request, id):
             form.save()
             messages.success(request, 'Course updated successfully!')
             return redirect('courses:list')
+        else:
+            messages.error(request, 'Failed to add course. Please check the form.')
     else:
         form = CourseForm(instance=course)
 

@@ -37,3 +37,16 @@ class CourseForm(forms.ModelForm):
                 'placeholder': 'Select end date'
             }),
         }
+    # Validate Course Dates
+    def clean(self):
+        cleaned_data = super().clean()
+        start = cleaned_data.get("start_date")
+        end = cleaned_data.get("end_date")
+
+        if start and end:
+            if end <= start:
+                raise forms.ValidationError(
+                    "End date must be after start date."
+                    )
+
+        return cleaned_data

@@ -23,6 +23,8 @@ def add_enrollment(request):
             form.save()
             messages.success(request, 'Enrollment added successfully!')
             return redirect('enrollments:list')
+        else:
+            messages.error(request, 'Failed to add course. Please check the form.')
     else:
         form = EnrollmentForm()
     return render(request, 'enrollments/add_enrollment.html', {'form': form})
@@ -36,6 +38,8 @@ def edit_enrollment(request, id):
             form.save()
             messages.success(request, 'Enrollment updated successfully!')
             return redirect('enrollments:list')
+        else:
+            messages.error(request, 'Failed to add course. Please check the form.')
     else:
         form = EnrollmentForm(instance=enrollment)
     return render(request, 'enrollments/edit_enrollment.html', {'form': form})

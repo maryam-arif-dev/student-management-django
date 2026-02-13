@@ -56,6 +56,8 @@ def edit_student(request, id):
             form.save()
             messages.success(request, "Student updated successfully!")
             return redirect('students:list')
+        else:
+            messages.error(request, 'Failed to add student. Please check the form.')  
     else:
         form = StudentForm(instance=student)
 

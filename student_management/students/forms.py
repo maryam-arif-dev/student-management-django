@@ -1,6 +1,6 @@
 from django import forms
 from .models import Student
-
+from datetime import date
 class StudentForm(forms.ModelForm):
     first_name = forms.CharField(
         max_length=50,
@@ -23,7 +23,13 @@ class StudentForm(forms.ModelForm):
     date_of_birth = forms.DateField(
         widget=forms.DateInput(attrs={'type': 'date'})  # HTML5 date picker
     )
-
+    # Prevent Future Date of Birth
+    def clean_date_of_birth(self):
+        dob = self.cleaned_data.get("date_of_birth")
+        if dob > date.today():
+             raise forms.ValidationError("Date of birth cannot be in the future.")
+        return dob
+    
     class Meta:
         model = Student
         fields = ['first_name', 'last_name', 'email', 'phone_number', 'address', 'date_of_birth']

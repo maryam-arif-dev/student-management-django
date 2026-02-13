@@ -4,8 +4,14 @@
     <h2>Edit Student</h2>
   </div>
   <div class="edit-form edit-student-form">
-    <form method="POST">
-      {% csrf_token %} {{ form.as_p }}
+    <form method="post">
+      {% csrf_token %} {{ form.non_field_errors }} {% for field in form %}
+      <div class="form-group">
+        {{ field.label_tag }} {{ field }}
+        <small class="form-error">{{ field.errors }}</small>
+      </div>
+      {% endfor %}
+
       <button type="submit">Update</button>
     </form>
   </div>

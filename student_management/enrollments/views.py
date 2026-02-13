@@ -3,13 +3,17 @@ from django.contrib import messages
 from .models import Enrollment
 from .forms import EnrollmentForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 # Restrict Pages to Logged-in Users
 @login_required(login_url='core:login')
 # List all enrollments
 def enrollment_list(request):
-    enrollments = Enrollment.objects.all()
-    return render(request, 'enrollments/enrollment_list.html', {'enrollments': enrollments})
+    enrollments = Enrollment.objects.all().order_by("-enrollment_date")
+    paginator = Paginator(enrollments, 5)  # 5 enrollments per page
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'enrollments/enrollment_list.html', {'page_obj': page_obj})
 
 # Add a new enrollment
 def add_enrollment(request):

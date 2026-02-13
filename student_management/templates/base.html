@@ -34,6 +34,7 @@
           </svg>
         </a>
       </div>
+      {% if user.is_authenticated %}
       <div class="header-actions">
         <button class="search-toggle" onclick="toggleSearch()">
           <i class="fa-solid fa-magnifying-glass"></i>
@@ -69,7 +70,6 @@
             class="{% if request.path == '/' %}active{% endif %}"
             >Dashboard</a
           >
-          {% if user.is_authenticated %}
           <a href="{% url 'students:list' %}">Students</a>
           <a href="{% url 'courses:list' %}">Courses</a>
           <a href="{% url 'enrollments:list' %}">Enrollments</a>

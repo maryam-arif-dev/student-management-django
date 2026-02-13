@@ -549,3 +549,27 @@ h2 {
   font-size: 1.05rem;
   letter-spacing: 0.5px;
 }
+/* Paginatore Style */
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination a {
+  margin: 0 8px;
+  padding: 6px 12px;
+  text-decoration: none;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.pagination a:hover {
+  background-color: #2563eb;
+}
+
+.current-page {
+  margin: 0 10px;
+  font-weight: 600;
+}

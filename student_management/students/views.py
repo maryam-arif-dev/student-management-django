@@ -4,13 +4,16 @@ from .forms import StudentForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 # Restrict Pages to Logged-in Users
 @login_required(login_url='core:login')
 # Fetch data from student
 def student_list(request):
-    # Search view | Show that based on search input value in student list table
     query = request.GET.get('q')
+    # Show all students from databse tabel in UI tabe
+    students = Student.objects.all()
+    # Search view | Show that based on search input value in student list table
     if query:
         students = Student.objects.filter(
             Q(first_name__icontains=query) |
@@ -19,11 +22,11 @@ def student_list(request):
             Q(phone_number__icontains=query) |
             Q(address__icontains=query)
         )
-        # Show all students from databse tabel in UI tabe
-    else:
-        students = Student.objects.all()
+    paginator = Paginator(students, 5) 
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
     context = {
-        'students': students,
+        'page_obj': page_obj,
         'query': query
     }
     return render(request, 'students/student_list.html', context)

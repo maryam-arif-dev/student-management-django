@@ -3,12 +3,19 @@ from django.contrib import messages
 from .models import Course
 from .forms import CourseForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 # Restrict Pages to Logged-in Users
 @login_required(login_url='core:login')
 # List View 
 def course_list(request):
-    courses = Course.objects.all()
-    return render(request, 'courses/course_list.html', {'courses': courses})
+    courses = Course.objects.all().order_by("-created_at")
+    paginator = Paginator(courses, 5)  # 5 courses per page
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    context = {
+        "page_obj":page_obj,
+    }
+    return render(request, 'courses/course_list.html', context)
 # Add View 
 def add_course(request):
     if request.method == 'POST':

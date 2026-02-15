@@ -1,6 +1,7 @@
 from django import forms
 from .models import Student
 from datetime import date
+import re
 class StudentForm(forms.ModelForm):
     first_name = forms.CharField(
         max_length=50,
@@ -29,7 +30,19 @@ class StudentForm(forms.ModelForm):
         if dob > date.today():
              raise forms.ValidationError("Date of birth cannot be in the future.")
         return dob
-    
+    # Phone number validation
+    def clean_phone_number(self):
+        phone = self.cleaned_data.get("phone_number")
+
+        # Remove spaces
+        phone = phone.replace(" ", "")
+        
+        # Phone number International Format validation
+        if not re.fullmatch(r"^\+?\d{10,15}$", phone):
+            raise forms.ValidationError(
+              "Enter a valid phone number (10–15 digits, optional +)."
+         )
+        return phone
     class Meta:
         model = Student
         fields = ['first_name', 'last_name', 'email', 'phone_number', 'address', 'date_of_birth']

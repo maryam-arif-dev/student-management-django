@@ -11,7 +11,7 @@
         placeholder="Search by name, email, phone, or address"
         value="{{ query | default:'' }}"
       />
-      <button type="submit">Search</button>
+      <button type="submit" class="btn btn-primary">Search</button>
     </form>
   </div>
   <div class="list-table student-list-table">
@@ -37,8 +37,17 @@
           <td data-label="Address">{{ student.address }}</td>
           <td data-label="Date of Birth">{{ student.date_of_birth }}</td>
           <td data-label="Actions">
-            <a href="{% url 'students:edit' student.id %}">Edit</a> |
-            <a href="{% url 'students:delete' student.id %}">Delete</a>
+            <a
+              href="{% url 'students:edit' student.id %}"
+              class="link link-success"
+              >Edit</a
+            >
+            |
+            <a
+              href="{% url 'students:delete' student.id %}"
+              class="link link-danger"
+              >Delete</a
+            >
           </td>
         </tr>
         {% endfor %}

@@ -28,8 +28,17 @@
           <td data-label="Start Date">{{ course.start_date }}</td>
           <td data-label="End Date">{{ course.end_date }}</td>
           <td data-label="Actions">
-            <a href="{% url 'courses:edit' course.id %}">Edit</a> |
-            <a href="{% url 'courses:delete' course.id %}">Delete</a>
+            <a
+              href="{% url 'courses:edit' course.id %}"
+              class="link link-success"
+              >Edit</a
+            >
+            |
+            <a
+              href="{% url 'courses:delete' course.id %}"
+              class="link link-danger"
+              >Delete</a
+            >
           </td>
         </tr>
         {% endfor %}

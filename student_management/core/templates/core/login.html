@@ -1,18 +1,28 @@
-{% extends "base.html" %} {% block content %}
-<div class="login-container">
-  <h2>Login</h2>
-  <form method="post">
-    {% csrf_token %} {{ form.non_field_errors }}
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Login</h2>
+      <form method="post">
+        {% csrf_token %} {{ form.non_field_errors }}
 
-    <div class="input-group">
-      {{ form.username.label_tag }} {{ form.username }}
+        <div class="input-group">
+          {{ form.username.label_tag }} {{ form.username }}
+        </div>
+
+        <div class="input-group">
+          {{ form.password.label_tag }} {{ form.password }}
+        </div>
+
+        <button type="submit" class="btn-login">Login</button>
+      </form>
     </div>
-
-    <div class="input-group">
-      {{ form.password.label_tag }} {{ form.password }}
-    </div>
-
-    <button type="submit" class="btn-login">Login</button>
-  </form>
-</div>
-{% endblock %}
+  </body>
+</html>

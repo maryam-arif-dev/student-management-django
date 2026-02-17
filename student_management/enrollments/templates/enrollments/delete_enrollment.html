@@ -15,8 +15,10 @@
   <div class="delete-form">
     <form method="POST">
       {% csrf_token %}
-      <button type="submit">Yes, Delete</button>
-      <a href="{% url 'enrollments:list' %}">Cancel</a>
+      <button type="submit" class="btn btn-warning">Yes, Delete</button>
+      <a href="{% url 'enrollments:list' %}" class="link link-primary"
+        >Cancel</a
+      >
     </form>
   </div>
 </div>

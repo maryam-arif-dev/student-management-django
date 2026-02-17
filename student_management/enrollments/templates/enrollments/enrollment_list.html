@@ -22,8 +22,17 @@
           <td data-label="Course">{{ enrollment.course }}</td>
           <td data-label="Date Enrolled">{{ enrollment.enrollment_date }}</td>
           <td data-label="Actions">
-            <a href="{% url 'enrollments:edit' enrollment.id %}">Edit</a> |
-            <a href="{% url 'enrollments:delete' enrollment.id %}">Delete</a>
+            <a
+              href="{% url 'enrollments:edit' enrollment.id %}"
+              class="link link-success"
+              >Edit</a
+            >
+            |
+            <a
+              href="{% url 'enrollments:delete' enrollment.id %}"
+              class="link link-danger"
+              >Delete</a
+            >
           </td>
         </tr>
         {% endfor %}

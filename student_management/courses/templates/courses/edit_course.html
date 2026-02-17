@@ -5,8 +5,8 @@
     <h2>Edit Course</h2>
   </div>
 
-  <div class="edit-form">
-    <form method="post">
+  <div>
+    <form method="post" class="align-items-center gap-2 edit-form">
       {% csrf_token %} {{ form.non_field_errors }} {% for field in form %}
       <div class="form-group">
         {{ field.label_tag }} {{ field }}
@@ -14,7 +14,7 @@
       </div>
       {% endfor %}
 
-      <button type="submit">Update</button>
+      <button type="submit" class="btn btn-primary">Update</button>
     </form>
   </div>
 

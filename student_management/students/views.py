@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import permission_required
 
 # Restrict Pages to Logged-in Users
 @login_required(login_url='core:login')
@@ -30,6 +31,8 @@ def student_list(request):
         'query': query
     }
     return render(request, 'students/student_list.html', context)
+# Check if the user has permission to add student
+@permission_required('students.add_student', raise_exception=True)
 # Add new Students
 def add_student(request):
     if request.method == 'POST':
@@ -46,6 +49,8 @@ def add_student(request):
     return render(request, 'students/add_student.html', {
         'form': form
     })
+# Check if the user has permission to edit student
+@permission_required('students.change_student', raise_exception=True)
 # Edit an existing student
 def edit_student(request, id):
     student = get_object_or_404(Student, id = id)
@@ -65,6 +70,8 @@ def edit_student(request, id):
         'form': form,
         'student': student
     })
+# check if the user has permission to delete student
+@permission_required('students.delete_student', raise_exception=True)
 # Delete a student 
 def delete_student(request, id):
     student = get_object_or_404(Student, id=id)

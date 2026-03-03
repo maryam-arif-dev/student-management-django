@@ -24,7 +24,9 @@
           <th>Phone</th>
           <th>Address</th>
           <th>Date of Birth</th>
+          {% if perms.students.change_student or perms.students.delete_student%}
           <th>Actions</th>
+          {% endif %}
         </tr>
       </thead>
       <tbody>
@@ -37,17 +39,19 @@
           <td data-label="Address">{{ student.address }}</td>
           <td data-label="Date of Birth">{{ student.date_of_birth }}</td>
           <td data-label="Actions">
+            {% if perms.students.change_student %}
             <a
               href="{% url 'students:edit' student.id %}"
               class="link link-success"
               >Edit</a
             >
-            |
+            {% endif %} {% if perms.students.delete_student %} |
             <a
               href="{% url 'students:delete' student.id %}"
               class="link link-danger"
               >Delete</a
             >
+            {% endif %}
           </td>
         </tr>
         {% endfor %}
@@ -80,7 +84,9 @@
   </div>
 
   <div class="list-link student-list-link">
+    {% if perms.students.add_student %}
     <a href="{% url 'students:add' %}">Add New Student</a>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

@@ -12,7 +12,9 @@
           <th>Student</th>
           <th>Course</th>
           <th>Enrollment Date</th>
+          {% if perms.enrollments.change_enrollment%}
           <th>Actions</th>
+          {% endif %}
         </tr>
       </thead>
       <tbody>
@@ -22,17 +24,19 @@
           <td data-label="Course">{{ enrollment.course }}</td>
           <td data-label="Date Enrolled">{{ enrollment.enrollment_date }}</td>
           <td data-label="Actions">
+            {% if perms.enrollments.change_enrollment %}
             <a
               href="{% url 'enrollments:edit' enrollment.id %}"
               class="link link-success"
               >Edit</a
             >
-            |
+            {% endif %}{% if perms.enrollments.delete_enrollment %} |
             <a
               href="{% url 'enrollments:delete' enrollment.id %}"
               class="link link-danger"
               >Delete</a
             >
+            {% endif %}
           </td>
         </tr>
         {% endfor %}
@@ -64,7 +68,9 @@
     {% endif %}
   </div>
   <div class="list-link">
+    {% if perms.enrollments.add_enrollment %}
     <a href="{% url 'enrollments:add' %}">Add New Enrollment</a>
+    {% endif %}
   </div>
 </div>
 

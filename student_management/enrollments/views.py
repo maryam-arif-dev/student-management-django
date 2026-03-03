@@ -4,6 +4,7 @@ from .models import Enrollment
 from .forms import EnrollmentForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import permission_required
 
 # Restrict Pages to Logged-in Users
 @login_required(login_url='core:login')
@@ -15,6 +16,8 @@ def enrollment_list(request):
     page_obj = paginator.get_page(page_number)
     return render(request, 'enrollments/enrollment_list.html', {'page_obj': page_obj})
 
+# Check if the user has permission to add enrollment
+@permission_required('enrollments.add_enrollment', raise_exception=True)
 # Add a new enrollment
 def add_enrollment(request):
     if request.method == 'POST':
@@ -29,6 +32,8 @@ def add_enrollment(request):
         form = EnrollmentForm()
     return render(request, 'enrollments/add_enrollment.html', {'form': form})
 
+# Check if the user has permission to edit enrollment
+@permission_required('enrollments.change_enrollment', raise_exception=True)
 # Edit an existing enrollment
 def edit_enrollment(request, id):
     enrollment = get_object_or_404(Enrollment, id=id)
@@ -44,6 +49,8 @@ def edit_enrollment(request, id):
         form = EnrollmentForm(instance=enrollment)
     return render(request, 'enrollments/edit_enrollment.html', {'form': form})
 
+# check if the user has permission to delete enrollment
+@permission_required('enrollments.delete_enrollment', raise_exception=True)
 # Delete an enrollment
 def delete_enrollment(request, id):
     enrollment = get_object_or_404(Enrollment, id=id)

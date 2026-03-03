@@ -15,7 +15,9 @@
           <th>Description</th>
           <th>Start Date</th>
           <th>End Date</th>
+          {% if perms.courses.change_course or perms.courses.delete_course %}
           <th>Actions</th>
+          {% endif %}
         </tr>
       </thead>
       <tbody>
@@ -28,17 +30,19 @@
           <td data-label="Start Date">{{ course.start_date }}</td>
           <td data-label="End Date">{{ course.end_date }}</td>
           <td data-label="Actions">
+            {% if perms.courses.change_course %}
             <a
               href="{% url 'courses:edit' course.id %}"
               class="link link-success"
               >Edit</a
             >
-            |
+            {% endif %}{% if perms.courses.delete_course %} |
             <a
               href="{% url 'courses:delete' course.id %}"
               class="link link-danger"
               >Delete</a
             >
+            {% endif %}
           </td>
         </tr>
         {% endfor %}
@@ -70,7 +74,9 @@
     {% endif %}
   </div>
   <div class="list-link">
+    {% if perms.courses.add_course %}
     <a href="{% url 'courses:add' %}">Add New Course</a>
+    {% endif %}
   </div>
 </div>
 

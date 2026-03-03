@@ -4,6 +4,7 @@ from .models import Course
 from .forms import CourseForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import permission_required
 # Restrict Pages to Logged-in Users
 @login_required(login_url='core:login')
 # List View 
@@ -16,6 +17,9 @@ def course_list(request):
         "page_obj":page_obj,
     }
     return render(request, 'courses/course_list.html', context)
+
+# Check if the user has permission to add course
+@permission_required('courses.add_course', raise_exception=True)
 # Add View 
 def add_course(request):
     if request.method == 'POST':
@@ -31,6 +35,8 @@ def add_course(request):
 
     return render(request, 'courses/add_course.html', {'form': form})
 
+# Check if the user has permission to edit course
+@permission_required('courses.change_course', raise_exception=True)
 # Edit an existing course
 def edit_course(request, id):
     course = get_object_or_404(Course, id=id)
@@ -48,6 +54,8 @@ def edit_course(request, id):
 
     return render(request, 'courses/edit_course.html', {'form': form})
 
+# Check if the user has permission to delete course
+@permission_required('courses.delete_course', raise_exception=True)
 # Delete an course 
 def delete_course(request, id):
     course = get_object_or_404(Course, id=id)
